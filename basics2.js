@@ -124,3 +124,14 @@ while (dice !== 5 && dice != 4) {
   console.log(`You rolled a ${dice}`);
   dice = Math.trunc(Math.random() * 6) + 1;
 }
+
+//* debugging steps
+/*
+1. use console.log() to print variables to the console and check the output
+2. use debugger keyword to create breakpoints
+3. use chrome dev tools to debug the code
+*/
+
+// identify, find, fix, prevent
+
+console.table(ilkayObject);
