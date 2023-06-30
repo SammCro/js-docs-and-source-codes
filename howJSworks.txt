@@ -1,0 +1,42 @@
+JS FEATURES;
+
+-High Level
+    Doing some abstractions.
+-Garbage Collected
+    No need to worry about memory management.
+-Interpreted
+    No need to compile.
+-Multi Paradigm
+    Supports Object Oriented, Functional, and Imperative programming.
+-Prototype Based Object Oriented
+    No need to create classes, just create objects and inherit from other objects.
+-First Class Functions
+    Functions are treated as values and can be passed as arguments to other functions.
+-Dynamic Typing
+    No need to specify the type of a variable.
+-Just in Time 
+    Code is not compiled but translated at runtime.
+
+How JS Runtime works?
+
+JS Runtime is a single threaded environment. It has a call stack, a heap, a queue, and an event loop.
+The interpreter reads code line by line (top down) and executes it one statement after another until there 
+is nothing left to execute. The call stack is a data structure that keeps track of the execution of the program.
+When a function is called, it is added to the call stack. When the function returns, it is removed from the call stack.
+The heap is an unstructured memory pool which stores all the objects created by our code. The queue is a list of messages
+to be processed. Each message has an associated function which gets called in order to handle the message. The event loop
+checks the queue and processes the messages one by one. If the call stack is empty, the event loop will take the first message
+from the queue and will push it to the call stack, which effectively calls the function associated with that message. If the
+message is a callback, it will be pushed to the call stack once the call stack is empty.
+The message then goes through the execution process again starting with top level statements.
+
+
+How Call Stack works?
+
+The call stack is a data structure that keeps track of the execution of the program. When a function is called, it is added to the call stack.
+When the function returns, it is removed from the call stack.
+If you have nested calls inside eachother they all return back into their parent scope which removes them off
+the call stack. The call stack is a LIFO (Last In First Out) data structure. The last function that gets pushed to the stack 
+is the first to be popped off when the function returns. The call stack is synchronous. It executes code in order and must finish executing
+a piece of code before moving on to the next one. If the call stack is full, the browser will throw an error saying "Maximum call stack size exceeded".
+This happens when a function calls itself recursively without an exit condition.
