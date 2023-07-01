@@ -20,13 +20,13 @@ JS FEATURES;
 How JS Runtime works?
 
 JS Runtime is a single threaded environment. It has a call stack, a heap, a queue, and an event loop.
-The interpreter reads code line by line (top down) and executes it one statement after another until there 
+The interpreter reads code line by  line (top down) and executes it one statement after another until there 
 is nothing left to execute. The call stack is a data structure that keeps track of the execution of the program.
 When a function is called, it is added to the call stack. When the function returns, it is removed from the call stack.
 The heap is an unstructured memory pool which stores all the objects created by our code. The queue is a list of messages
 to be processed. Each message has an associated function which gets called in order to handle the message. The event loop
 checks the queue and processes the messages one by one. If the call stack is empty, the event loop will take the first message
-from the queue and will push it to the call stack, which effectively calls the function associated with that message. If the
+from the queue and will pus h it to the call stack, which effectively calls the function associated with that message. If the
 message is a callback, it will be pushed to the call stack once the call stack is empty.
 The message then goes through the execution process again starting with top level statements.
 
@@ -40,3 +40,55 @@ the call stack. The call stack is a LIFO (Last In First Out) data structure. The
 is the first to be popped off when the function returns. The call stack is synchronous. It executes code in order and must finish executing
 a piece of code before moving on to the next one. If the call stack is full, the browser will throw an error saying "Maximum call stack size exceeded".
 This happens when a function calls itself recursively without an exit condition.
+
+Scopes in JavaScript
+
+Scope is the accessibility of variables, functions, and objects in some particular part of your code during runtime.
+In JavaScript, there are two types of scope:
+    -Global Scope
+        Variables declared outside of a function are in the global scope. They are accessible from anywhere in your code.
+    -Local Scope
+        Variables declared inside a function are in the local scope. They are only accessible from inside the function.
+        Local scope is also called function scope.
+        This means that variables declared within this block only 
+        exist within the curly braces of that block. Once you are outside that block, the variable is undefined.
+        This is because the variable is only accessible to the code within that block.
+        This is also known as lexical scoping.
+    -Block Scope
+        Variables declared with let and const are block scoped. This means that they are only accessible within the curly braces of the block they were declared in.
+        This is also known as block scoping.
+        This is different from var, which is function scoped.
+        This means that var variables are only accessible within the function they were declared in.
+
+Hoisting
+
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution.
+This means that if you declare variables and functions at the bottom of your code, they are actually moved to the top of your code during runtime.
+This allows you to use functions before declaring them in your code. However, variables declared with var are hoisted differently than variables declared with let and const.
+Variables declared with var are hoisted to the top of their scope and initialized with a value of undefined.
+Variables declared with let and const are also hoisted to the top of their scope but are not initialized.
+This means that if you try to use a let or const variable before declaring it, you will get a ReferenceError.
+Functions are hoisted before variables. This means that you can use functions before declaring them in your code.
+However, this only works with function declarations and not with function expressions.
+Function declarations are hoisted to the top of their scope and can be used before they are declared.
+Function expressions are not hoisted and cannot be used before they are declared.
+
+TDZ
+
+TDZ stands for Temporal Dead Zone. It is a zone between the start of the scope and the initialization of a variable.
+This means that if you try to access a variable before it is initialized, you will get a ReferenceError.   
+This is only the case with let and const variables. Variables declared with var are hoisted to the top of their scope and initialized with a value of undefined.
+This means that you can use var variables before declaring them in your code. However, this is not the case with let and const variables.
+Variables declared with let and const are hoisted to the top of their scope but are not initialized.
+This means that if you try to use a let or const variable before declaring it, you will get a ReferenceError.
+
+
+This Keyword
+
+The this keyword refers to the object that the function is a property of. The value of this depends on where the function is called.
+If you call a function that is a property of an object, this will refer to the object that the function is a property of.
+If the same function is invoked from somewhere else, this will refer to the global object, which is window in a browser and global in Node.js.
+If you use the new keyword, this will refer to the newly created object.
+If you use call, apply, or bind, this will refer to the object that is passed in as the argument.
+If the function is called using the arrow syntax, this will refer to the object that the arrow function is a property of.
+If none of the above apply, this will refer to undefined.
