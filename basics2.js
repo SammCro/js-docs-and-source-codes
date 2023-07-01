@@ -135,3 +135,83 @@ while (dice !== 5 && dice != 4) {
 // identify, find, fix, prevent
 
 console.table(ilkayObject);
+
+//* Regular and Arrow Functions with this Keyword
+
+var age2 = 33;
+
+const samet = {
+  firstName: 'Samet',
+  age: 23,
+  calAge: function () {
+    console.log(this.age);
+  },
+
+  calAgeNew: () => {
+    console.log(this.age2);
+  },
+};
+
+samet.calAge();
+samet.calAgeNew();
+
+// regular function calls do not create this keyword so it gives undefined when try to access this.
+// arrow functions use this keyword from parent scope.
+
+// can be used self and that to prevent it
+
+const sametNew = {
+  firstName: 'Samet',
+  age: 23,
+  calAge: function () {
+    const self = this;
+    const isMillenial = function () {
+      console.log(self.age >= 1981 && self.age <= 1996);
+    };
+    isMillenial();
+  },
+};
+
+// also can use arrow functions
+
+const sametNew2 = {
+  firstName: 'Samet',
+  age: 23,
+  calAge: function () {
+    const isMillenial = () => {
+      console.log(this.age >= 1981 && this.age <= 1996);
+    };
+    isMillenial();
+  },
+};
+
+//* Arguments keyword
+
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+
+console.log(addExpr(2, 3));
+console.log(addExpr(2, 3, 4));
+
+// arrow functions do not have arguments keyword.
+
+//* Primitives and Objects
+
+let age3 = 30;
+let oldAge = age3;
+age3 = 31;
+
+console.log(age3);
+console.log(oldAge); // there is no change
+
+const objectNew = {
+  firstName: 'Samet',
+};
+
+const objectNew2 = objectNew;
+objectNew2.firstName = 'kral';
+
+console.log(objectNew);
+console.log(objectNew2); // there is change
