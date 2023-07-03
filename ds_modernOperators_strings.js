@@ -188,3 +188,243 @@ const nullishCoalescing = null ?? 'İlkay';
 console.log(nullishCoalescing); // İlkay
 
 //* logical assignment operators
+
+// logical assignment operators
+
+let x1 = 10;
+// x1 &&= 20;
+console.log(x1); // 20
+
+let y1 = 10;
+// y1 ||= 20;
+console.log(y1); // 10
+
+let z1 = 10;
+// z1 ??= 20;
+console.log(z1); // 10
+
+//* The for-of loop
+
+// for-of loop
+
+const arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (const item of arr2) {
+  console.log(item);
+}
+
+// for-of loop with entries
+
+for (const [index, item] of arr2.entries()) {
+  console.log(`${index} - ${item}`);
+}
+
+//* object literals
+
+// object literals
+
+const firstName1 = 'İlkay';
+
+const person = {
+  firstName1,
+  lastName1: 'S.',
+  age1: 31,
+  job1: 'Software Engineer',
+};
+
+console.log(person);
+
+// object literals with functions
+
+const person1 = {
+  firstName1: 'İlkay',
+  lastName1: 'S.',
+  age1: 31,
+  job1: 'Software Engineer',
+  calcAge1() {
+    this.age1 = new Date().getFullYear() - this.age1;
+    return this.age1;
+  },
+};
+
+console.log(person1.calcAge1());
+
+//* optional chaining
+
+// optional chaining
+
+const person2 = {
+  firstName2: 'İlkay',
+  lastName2: 'S.',
+  age2: 31,
+  job2: 'Software Engineer',
+};
+
+console.log(person2?.address?.city); // undefined
+
+// with methods
+
+const person4 = {
+  firstName2: 'İlkay',
+  lastName2: 'S.',
+  age2: 31,
+  job2: 'Software Engineer',
+  calcAge2() {
+    this.age2 = new Date().getFullYear() - this.age2;
+    return this.age2;
+  },
+};
+
+console.log(person4?.calcAge2?.()); // 31
+
+//* nullish coalescing operator
+
+// nullish coalescing operator
+
+const person3 = {
+  firstName3: 'İlkay',
+  lastName3: 'S.',
+  age3: 31,
+  job3: 'Software Engineer',
+  address3: '',
+};
+
+console.log(person3.address3 ?? 'Ankara'); // ' '
+
+//* dynamic object keys
+
+// dynamic object keys
+
+function printPersonInfo({ name, ...rest }) {
+  console.log(name);
+  console.log(rest);
+}
+
+printPersonInfo({ name: 'İlkay', age: 31, job: 'Software Engineer' });
+
+//*  Object Keys, Values and Entries
+
+// Object Keys, Values and Entries
+
+const person5 = {
+  firstName5: 'İlkay',
+  lastName5: 'S.',
+  age5: 31,
+  job5: 'Software Engineer',
+  address5: '',
+};
+
+console.log(Object.keys(person5));
+console.log(Object.values(person5));
+console.log(Object.entries(person5));
+
+//* Sets
+
+//sets
+
+const mySet = new Set([1, 2, 3, 2, 3, 4]);
+
+console.log(mySet);
+
+//* Maps
+
+//maps
+
+const myMap = new Map([
+  ['name', 'İlkay'],
+  ['age', 31],
+  ['job', 'Software Engineer'],
+]);
+
+console.log(myMap);
+
+// convert object to map
+
+const myMap2 = new Map(Object.entries(person5));
+
+//* Work with Strings
+
+// Work with Strings
+
+const airline = 'Turkish Airlines';
+
+airline.slice(0, 7); // Turkish
+
+airline.slice(8); // Airlines
+
+airline.slice(-2); // es
+
+airline.slice(0, airline.indexOf(' ')); // Turkish
+
+airline.slice(airline.lastIndexOf(' ') + 1); // Airlines
+
+airline.slice(0, airline.indexOf(' ')).toUpperCase(); // TURKISH
+
+airline.slice(0, airline.indexOf(' ')).toLowerCase(); // turkish
+
+// check seat
+
+const checkMiddleSeat = function (seat) {
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') {
+    console.log('You got the middle seat');
+  } else {
+    console.log('You got lucky');
+  }
+};
+
+checkMiddleSeat('11B'); // You got the middle seat
+
+// comparing emails
+
+const email = 'ilkay@beevision.ai';
+const loginEmail = '   ilkay@Beevision.ai   \n';
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+
+// replacing
+
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcement.replace('door', 'gate'));
+console.log(announcement.replaceAll('door', 'gate'));
+
+// string split
+
+let str5 = 'Hello World';
+let res = str.split(' ');
+console.log(res);
+
+// string join
+
+let arr5 = ['Hello', 'World'];
+let res2 = arr.join(' ');
+console.log(res2);
+
+//string padStart
+
+let str2 = '5';
+let res3 = str2.padStart(4, '0');
+console.log(res3);
+
+//string padEnd
+
+let str3 = '5';
+let res4 = str3.padEnd(4, '0');
+console.log(res4);
+
+const str4 = '  sdad_DASsdas ';
+
+const prettier = function (str) {
+  const words = str4.toLowerCase().trim().split('_');
+  const newWord =
+    words[0] + words[1].replace(words[1][0], words[1][0].toUpperCase());
+  return newWord;
+};
+
+console.log(prettier(str4));
